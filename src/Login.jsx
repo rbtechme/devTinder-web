@@ -5,17 +5,13 @@ const Login = () => {
   const [emailId, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     try {
-      axios
-        .post(
-          "http://localhost:7777/login",
-          { emailId, password },
-          { withCredentials: true }
-        )
-        .then((response) => {
-          console.log(response);
-        });
+      const res = await axios.post(
+        "http://localhost:7777/login",
+        { emailId, password },
+        { withCredentials: true }
+      );
     } catch (error) {
       console.error(error);
     }
