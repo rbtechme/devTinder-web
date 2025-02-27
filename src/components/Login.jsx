@@ -3,21 +3,25 @@ import axios from "axios";
 
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import BASE_URL from "../constants/baseUrl";
 
 const Login = () => {
   const [emailId, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:7777/login",
+        BASE_URL + "/login",
         { emailId, password },
         { withCredentials: true }
       );
 
       dispatch(addUser(res.data.data));
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -73,6 +77,17 @@ const Login = () => {
             <button className="btn btn-primary" onClick={handleLogin}>
               Login
             </button>
+          </div>
+          <div className="label">
+            <span className="label-text-alt">
+              I do not have an account:{" "}
+              <Link
+                to="/signup"
+                className="text-primary-content hover:underline cursor-pointer text-lg subpixel-antialiased"
+              >
+                Signup
+              </Link>
+            </span>
           </div>
         </div>
       </div>
