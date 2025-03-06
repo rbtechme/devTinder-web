@@ -15,15 +15,21 @@ const Feed = () => {
         withCredentials: true,
       });
       dispatch(addFeed(res.data.users));
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
     fetchFeed();
   }, []);
 
-  
+  if (feed.length === 0)
+    return (
+      <>
+        <div className="flex justify-center mt-10 font-extrabold">
+          <h1>No Dev Profile For You</h1>
+        </div>
+      </>
+    );
 
   return (
     feed && (

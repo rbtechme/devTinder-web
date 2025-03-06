@@ -18,22 +18,21 @@ const UserCard = ({ user }) => {
         {},
         { withCredentials: true }
       );
-      if(status === "interested"){
+      if (status === "interested") {
         setIsSendRequest(true);
         setTimeout(() => {
           setIsSendRequest(false);
-        }, 5000);
+          dispatch(removeFeed(id));
+        }, 2000);
       }
-      if(status === "ignore"){
+      if (status === "ignore") {
         setIsIgnoreRequest(true);
         setTimeout(() => {
           setIsIgnoreRequest(false);
-        }, 5000);
+          dispatch(removeFeed(id));
+        }, 2000);
       }
-     
-      dispatch(removeFeed(id));
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
@@ -63,20 +62,18 @@ const UserCard = ({ user }) => {
           </button>
         </div>
       </div>
-      {isSendRequest && (
-        <div className="toast toast-end">
+      <div className="toast toast-top">
+        {isIgnoreRequest && (
+          <div className="alert alert-warning">
+            <span>Oops! you ingore to {firstName + " " + lastName}</span>
+          </div>
+        )}
+        {isSendRequest && (
           <div className="alert alert-success">
-            <span>interested Sent Successfully.</span>
+            <span>intereste sent to {firstName + " " + lastName}.</span>
           </div>
-        </div>
-      )}
-       {isSendRequest && (
-        <div className="toast toast-end">
-          <div className="alert alert-danger">
-            <span>Ignore profile.</span>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

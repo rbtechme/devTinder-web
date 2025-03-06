@@ -26,7 +26,7 @@ const AppBar = () => {
   };
   return (
     <>
-      <div className="navbar bg-base-300">
+      <div className="navbar top-0 bg-base-300">
         <div className="flex-1">
           <Link className="btn btn-ghost text-xl" to="/">
             DevTinder
