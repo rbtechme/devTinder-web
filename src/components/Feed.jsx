@@ -25,6 +25,8 @@ const Feed = () => {
     fetchFeed();
   }, []);
 
+  
+
   return (
     feed && (
       <div className="flex flex-wrap justify-center gap-4 m-10">

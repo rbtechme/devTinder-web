@@ -64,6 +64,9 @@ const AppBar = () => {
                   <Link to="/connection">Connection</Link>
                 </li>
                 <li>
+                  <Link to="/request">request</Link>
+                </li>
+                <li>
                   <a onClick={handleLogout}>Logout</a>
                 </li>
               </ul>
