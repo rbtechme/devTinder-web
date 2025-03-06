@@ -39,7 +39,6 @@ const EditProfle = ({ user }) => {
       }, 3000);
     } catch (error) {
       setError(error);
-      console.error(error);
     }
   };
 

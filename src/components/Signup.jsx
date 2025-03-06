@@ -22,7 +22,6 @@ const Signup = () => {
 
       navigate("/login");
     } catch (error) {
-      console.error(error);
     }
   };
 

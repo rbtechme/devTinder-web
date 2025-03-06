@@ -15,7 +15,6 @@ const Connection = () => {
 
       dispatch(addConnection(res.data.data));
     } catch (error) {
-      console.log(error);
     }
   };
 

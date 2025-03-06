@@ -14,10 +14,8 @@ const Feed = () => {
       const res = await axios.get("http://localhost:7777/user/feed", {
         withCredentials: true,
       });
-      console.log(res.data);
       dispatch(addFeed(res.data.users));
     } catch (error) {
-      console.error(error);
     }
   };
 

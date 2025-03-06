@@ -11,7 +11,6 @@ const AppBar = () => {
 
   const handleLogout = async () => {
     try {
-      console.log("logout");
       await axios.post(
         "http://localhost:7777/logout",
         {},
@@ -23,7 +22,6 @@ const AppBar = () => {
       dispatch(removeFeed());
       navigate("/login");
     } catch (error) {
-      console.error(error);
     }
   };
   return (
