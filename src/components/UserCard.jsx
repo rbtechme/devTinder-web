@@ -23,22 +23,22 @@ const UserCard = ({ user }) => {
         setTimeout(() => {
           setIsSendRequest(false);
           dispatch(removeFeed(id));
-        }, 2000);
+        }, 1000);
       }
       if (status === "ignore") {
         setIsIgnoreRequest(true);
         setTimeout(() => {
           setIsIgnoreRequest(false);
           dispatch(removeFeed(id));
-        }, 2000);
+        }, 1000);
       }
     } catch (error) {}
   };
 
   return (
     <div key={_id} className="card bg-base-300 w-96 shadow-sm">
-      <figure className="flex-shrink-0">
-        <img className="w-48 rounded-full" src={photoUrl} alt="User" />
+      <figure className="flex-shrink-0 m-2">
+        <img className="rounded-full w-48 h-48" src={photoUrl} alt="User" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + " " + lastName}</h2>

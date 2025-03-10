@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BASE_URL from "../constants/baseUrl";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -10,18 +12,25 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [error, setError] = useState("");
 
   const handleSubmit = async () => {
     try {
-      await axios.post(BASE_URL + "/signup", {
+      const res = await axios.post(BASE_URL + "/signup", {
         firstName,
         lastName,
         emailId,
         password,
+      },{
+        withCredentials:true
       });
-
-      navigate("/login");
+      dispatch(addUser(res.data.user));
+      navigate("/profile");
     } catch (error) {
+      console.log(error);
+      setError(error.response.data.message);
+      
     }
   };
 
@@ -115,6 +124,7 @@ const Signup = () => {
                 {showPassword ? "Hide" : "Show"}
               </button>
             </label>
+            <p className="text-red-500">{error}</p>
             <div className="card-actions justify-center">
               <button
                 className="btn btn-primary"

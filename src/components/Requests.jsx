@@ -49,9 +49,9 @@ const Requests = () => {
           return (
             <div key={_id} className="flex justify-center">
               <div className="flex mx-10 m-4 bg-base-300 w-1/3 rounded-lg">
-                <figure className="flex-shrink-0 w-32 h-32 ">
+                <figure className="flex-shrink-0 flex justify-center items-center m-2">
                   <img
-                    className="rounded-full w-full h-full object-cover"
+                    className="rounded-full w-32 h-32"
                     src={photoUrl}
                     alt="User"
                   />

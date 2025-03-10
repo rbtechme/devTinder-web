@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
 import axios from "axios";
-import { removeFeed } from "../utils/feedSlice";
+import { emptyFeed, removeFeed } from "../utils/feedSlice";
 
 const AppBar = () => {
   const user = useSelector((store) => store.user);
@@ -19,7 +19,7 @@ const AppBar = () => {
         }
       );
       dispatch(removeUser());
-      dispatch(removeFeed());
+      dispatch(emptyFeed());
       navigate("/login");
     } catch (error) {
     }

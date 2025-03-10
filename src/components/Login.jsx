@@ -12,6 +12,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -67,12 +68,19 @@ const Login = () => {
               />
             </svg>
             <input
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               className="grow"
               placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <button
+                type="button"
+                onClick={() => setIsShowPassword(!isShowPassword)}
+                className="ml-2"
+              >
+                {isShowPassword ? "Hide" : "Show"}
+              </button>
           </label>
           <p className="text-red-500">{error}</p>
           <div className="card-actions justify-center">
