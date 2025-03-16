@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
 import axios from "axios";
 import { emptyFeed, removeFeed } from "../utils/feedSlice";
+import BASE_URL from "../constants/baseUrl";
 
 const AppBar = () => {
   const user = useSelector((store) => store.user);
@@ -12,7 +13,7 @@ const AppBar = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:7777/logout",
+        BASE_URL+ "/logout",
         {},
         {
           withCredentials: true,
