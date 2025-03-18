@@ -29,8 +29,8 @@ const AppBar = () => {
     <>
       <div className="navbar top-0 bg-base-300">
         <div className="flex-1">
-          <Link className="btn btn-ghost text-xl" to="/">
-            DevTinder
+          <Link className="btn btn-ghost text-xl bg-purple-700 text-white hover:bg-purple-500"  to="/">
+            Darak Darika
           </Link>
         </div>
         {user && (
@@ -61,6 +61,9 @@ const AppBar = () => {
                 </li>
                 <li>
                   <Link to="/connection">Connection</Link>
+                </li>
+                <li>
+                  <Link to="/premium">Premium</Link>
                 </li>
                 <li>
                   <Link to="/request">request</Link>
