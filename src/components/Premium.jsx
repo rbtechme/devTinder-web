@@ -58,13 +58,13 @@ const Premium = () => {
     <>
       <div className="flex justify-center mt-10">
         <div className="stack size-28">
-          <div className="border-base-content card bg-base-100 border text-center">
+          <div className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105">
             <div className="card-body">🎉 You already Premium user 🙏</div>
           </div>
-          <div className="border-base-content card bg-base-100 border text-center">
+          <div className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105">
             <div className="card-body">😍</div>
           </div>
-          <div className="border-base-content card bg-base-100 border text-center">
+          <div className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105">
             <div className="card-body">🥳</div>
           </div>
         </div>
