@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import BASE_URL from "../constants/baseUrl";
 
 const Premium = () => {
