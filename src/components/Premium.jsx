@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { use, useEffect } from "react";
+import React, { use, useEffect, useState } from "react";
 import BASE_URL from "../constants/baseUrl";
 
 const Premium = () => {
-  const [isPremium, setIsPremium] = React.useState(false);
+  const [isPremium, setIsPremium] = useState(false);
   const [moveX, setMoveX] = useState(0);
 
   const handleMouseMove = (event) => {
