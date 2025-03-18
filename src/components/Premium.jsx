@@ -39,7 +39,7 @@ const Premium = () => {
       console.log(error);
     }
 
-    const res = await axios.post(BASE_URL + "/premium/verify", {
+    const res = await axios.get(BASE_URL + "/premium/verify", {
       withCredentials: true,
     });
     const { isPremiumUser } = res.data;
