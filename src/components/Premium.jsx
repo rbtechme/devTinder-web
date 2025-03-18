@@ -4,6 +4,13 @@ import BASE_URL from "../constants/baseUrl";
 
 const Premium = () => {
   const [isPremium, setIsPremium] = React.useState(false);
+  const [moveX, setMoveX] = useState(0);
+
+  const handleMouseMove = (event) => {
+    const { clientX } = event;
+    const centerX = window.innerWidth / 2;
+    setMoveX((clientX - centerX) / 20);
+  };
 
   const handlePayment = async (type) => {
     const res = await axios.post(
@@ -56,19 +63,28 @@ const Premium = () => {
 
   return isPremium ? (
     <>
-      <div className="flex justify-center mt-10">
-        <div className="stack size-28">
-          <div className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105">
-            <div className="card-body">🎉 You already Premium user 🙏</div>
-          </div>
-          <div className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105">
-            <div className="card-body">😍</div>
-          </div>
-          <div className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105">
-            <div className="card-body">🥳</div>
-          </div>
+      <div className="flex justify-center mt-10" onMouseMove={handleMouseMove}>
+      <div className="stack size-28">
+        <div
+          className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105"
+          style={{ transform: `translateX(${moveX}px)` }}
+        >
+          <div className="card-body">🎉 You already Premium user 🙏</div>
+        </div>
+        <div
+          className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105"
+          style={{ transform: `translateX(${moveX * -1}px)` }} // Moves opposite
+        >
+          <div className="card-body">😍</div>
+        </div>
+        <div
+          className="border-base-content card bg-base-100 border text-center transition-transform duration-300 hover:scale-105"
+          style={{ transform: `translateX(${moveX}px)` }}
+        >
+          <div className="card-body">🥳</div>
         </div>
       </div>
+    </div>
     </>
   ) : (
     <div className="m-10">
