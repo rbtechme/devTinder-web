@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { use } from "react";
 import BASE_URL from "../constants/baseUrl";
 
 const Premium = () => {
@@ -49,6 +49,10 @@ const Premium = () => {
       setIsPremium(false);
     }
   };
+
+  useEffect(() => {
+    premiumVerify();
+  }, []);
 
   return isPremium ? (
     <>
