@@ -3,38 +3,68 @@ import React from "react";
 import BASE_URL from "../constants/baseUrl";
 
 const Premium = () => {
+  const [isPremium, setIsPremium] = React.useState(false);
+
   const handlePayment = async (type) => {
     const res = await axios.post(
       BASE_URL + "/payment/create",
       { memberShip: type },
       { withCredentials: true }
     );
-    
-    console.log(res.data);
 
-    const {keyId, amount,currency, orderId, notes, } = res.data;
+    const { keyId, amount, currency, orderId, notes } = res.data;
 
     const options = {
-        key: keyId,
-        amount,
-        currency,
-        name: 'Darak Darika',
-        description: 'This is a buddhist matrimony site for Buddhist people.',
-        order_id: orderId, // This is the order_id created in the backend
-        prefill: {
-          name: notes.firstName +" "+notes.lastName,
-          email: notes.emailId
-        },
-        theme: {
-          color: '#F37254'
-        },
-      };
+      key: keyId,
+      amount,
+      currency,
+      name: "Darak Darika",
+      description: "This is a buddhist matrimony site for Buddhist people.",
+      order_id: orderId, // This is the order_id created in the backend
+      prefill: {
+        name: notes.firstName + " " + notes.lastName,
+        email: notes.emailId,
+      },
+      theme: {
+        color: "#F37254",
+      },
+    };
     const rzp = new window.Razorpay(options);
     rzp.open();
-
   };
 
-  return (
+  const premiumVerify = async () => {
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+
+    const res = await axios.post(BASE_URL + "/premium/verify", {
+      withCredentials: true,
+    });
+    const { isPremiumUser } = res.data;
+    if (isPremiumUser === true) {
+      setIsPremium(true);
+    } else {
+      setIsPremium(false);
+    }
+  };
+
+  return isPremium ? (
+    <>
+      <div className="stack size-28">
+        <div className="border-base-content card bg-base-100 border text-center">
+          <div className="card-body">🎉 You already Premium user 🙏</div>
+        </div>
+        <div className="border-base-content card bg-base-100 border text-center">
+          <div className="card-body">😍</div>
+        </div>
+        <div className="border-base-content card bg-base-100 border text-center">
+          <div className="card-body">🥳</div>
+        </div>
+      </div>
+    </>
+  ) : (
     <div className="m-10">
       <div className="flex w-full flex-col lg:flex-row">
         <div className="card bg-base-200 rounded-box grid h-auto grow place-items-center">
